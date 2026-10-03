@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Campus Network</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <p class="eyebrow">Network Operations Center</p>
+                <h1>Smart Campus Network Fault Detection & Recovery</h1>
+            </div>
+            <button id="refreshBtn" class="primary-btn">Refresh Data</button>
+        </header>
+
+        <section class="top-grid">
+            <div class="card summary">
+                <h3>Network Status</h3>
+                <div class="stats">
+                    <div>
+                        <span id="deviceCount">0</span>
+                        <small>Devices</small>
+                    </div>
+                    <div>
+                        <span id="incidentCount">0</span>
+                        <small>Incidents</small>
+                    </div>
+                    <div>
+                        <span id="onlineCount">0</span>
+                        <small>Online</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card summary">
+                <h3>Priority Incident</h3>
+                <p id="priorityIncident">No incidents yet.</p>
+            </div>
+        </section>
+
+        <section class="layout">
+            <div class="panel left-panel">
+                <div class="card">
+                    <h3>Add Device</h3>
+                    <form id="deviceForm">
+                        <input type="text" id="deviceName" placeholder="Device name" required />
+                        <input type="text" id="deviceType" placeholder="Type" value="Switch" required />
+                        <input type="text" id="deviceIp" placeholder="IP Address" required />
+                        <input type="text" id="deviceMac" placeholder="MAC Address" />
+                        <input type="text" id="deviceLocation" placeholder="Location" required />
+                        <button type="submit" class="primary-btn">Add Device</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h3>Add Connection</h3>
+                    <form id="connectionForm">
+                        <select id="sourceDevice"></select>
+                        <select id="targetDevice"></select>
+                        <input type="number" id="connectionCost" value="1" min="1" required />
+                        <button type="submit" class="primary-btn">Add Connection</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h3>Fault Analysis</h3>
+                    <form id="faultForm">
+                        <select id="faultDevice"></select>
+                        <textarea id="faultDescription" rows="3" placeholder="Optional fault description"></textarea>
+                        <button type="submit" class="danger-btn">Analyze Fault</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel right-panel">
+                <div class="card">
+                    <h3>Campus Devices</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>IP</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="deviceTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h3>Fault Analysis Result</h3>
+                    <div id="faultResult">No route analysis has been run yet.</div>
+                </div>
+
+                <div class="card">
+                    <h3>Incidents</h3>
+                    <div id="incidentList" class="incident-list"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
